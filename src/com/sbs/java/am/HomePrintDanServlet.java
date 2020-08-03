@@ -13,19 +13,19 @@ public class HomePrintDanServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-		
-		String inputedDan = request.getParameter("dan"); 
-		
-		if ( inputedDan == null) {
+
+		String inputedDan = request.getParameter("dan");
+
+		if (inputedDan == null) {
 			inputedDan = "1";
 		}
-		
-		String inputedLimit = request.getParameter("limit"); 
-		
-		if ( inputedLimit == null) {
+
+		String inputedLimit = request.getParameter("limit");
+
+		if (inputedLimit == null) {
 			inputedLimit = "9";
 		}
-		
+
 		int dan = Integer.parseInt(inputedDan);
 		int limit = Integer.parseInt(inputedLimit);
 		String color = request.getParameter("color");
@@ -33,8 +33,9 @@ public class HomePrintDanServlet extends HttpServlet {
 			color = "";
 		}
 		response.getWriter().append(String.format("<div style=\"color:%s;\">%d단</div>", color, dan));
-		for (int i = 1; i <= limit ; i++) {
-			response.getWriter().append(String.format( "<div style=\"color:%s;\">%d * %d = %d</div>", color, dan, i, dan * i));
+		for (int i = 1; i <= limit; i++) {
+			response.getWriter()
+					.append(String.format("<div style=\"color:%s;\">%d * %d = %d</div>", color, dan, i, dan * i));
 		}
-	}	
+	}
 }
